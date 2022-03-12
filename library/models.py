@@ -30,10 +30,19 @@ class Author(models.Model):
         return f"{self.name}"
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
 class Book(models.Model):
     title = models.CharField(max_length=200)
-    author_id = models.ForeignKey(Author,models.CASCADE)
-    location_id = models.ForeignKey(Location,models.CASCADE)
+    slug = models.SlugField(max_length=50)
+    author_id = models.ForeignKey(Author, models.CASCADE)
+    location_id = models.ForeignKey(Location, models.CASCADE)
+    tag_ids = models.ManyToManyField(Tag, blank=True)
     isbn = models.CharField(max_length=20)
     date_edition = models.DateField()
     edition = models.IntegerField()

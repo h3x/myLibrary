@@ -1,0 +1,31 @@
+{%  extends 'library/base.html' %}
+{% load static %}
+
+{% block main_content %}
+<main>
+    <h1>Books</h1>
+
+    {% for book in books %}
+        <div class="book-card" >
+            <h3 class="book-title"><a href="{% url 'single-books' slug=book.slug %}">{{ book.title }}</a></h3>
+        </div>
+    {% endfor %}
+
+    <hr />
+    <h2>Tags</h2>
+    <ul>
+        {% for tag in tags %}
+            <li>{{ tag }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Authors</h2>
+    <ul>
+        {% for author in authors %}
+            <li>{{ author }}</li>
+        {% endfor %}
+    </ul>
+
+</main>
+
+
+{% endblock %}
