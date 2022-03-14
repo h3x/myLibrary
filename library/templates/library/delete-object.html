@@ -1,0 +1,16 @@
+{% extends 'library/base.html' %}
+
+{% block title %}
+Delete Book
+{% endblock %}
+
+{% block main_content %}
+    <h1>Are you sure you want to delete {{ title }}?</h1>
+    <form method="POST">
+    {%  csrf_token %}
+        <a href="{% url 'all-books' %}">
+            <button>Back</button>
+        </a>
+        <input type="submit" value="Confirm" />
+    </form>
+{% endblock %}
