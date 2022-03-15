@@ -1,13 +1,33 @@
-{%  extends 'library/base.html' %}
+{%  extends 'library/base/base.html' %}
 
 {%  block title %}
     Create New Book
 {% endblock %}
 
 {% block  main_content %}
-<form method="POST">
-{%  csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" />
-</form>
+    <div class="container">
+        <div class="form-card">
+            <form method="POST" >
+                {%  csrf_token %}
+                {% for field in form %}
+                    <ul>
+                    <li class="form-item">
+                        <label class="form-field-label">
+                        {{ field.label }}
+                        </label>
+                        <span class="form-field">
+                            {{ field }}
+                        </span>
+                    </li>
+                    </ul>
+
+
+
+                {% endfor %}
+                <input type="submit" />
+            </form>
+        </div>
+
+    </div>
+
 {% endblock %}

@@ -1,5 +1,5 @@
-from django.forms import ModelForm
-from .models import Book
+from django.forms import ModelForm,CheckboxSelectMultiple,ModelMultipleChoiceField
+from .models import Book,Tag
 
 
 class BookForm(ModelForm):
@@ -9,8 +9,8 @@ class BookForm(ModelForm):
             'title',
             'author_id',
             'location_id',
-            'tag_ids',
             'isbn',
             'date_edition',
             'edition',
+            'tag_ids',
         ]

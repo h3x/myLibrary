@@ -40,6 +40,7 @@ class Tag(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
     slug = models.SlugField(max_length=50) # TODO: Slug field should be unique
     author_id = models.ForeignKey(Author, models.CASCADE)
     location_id = models.ForeignKey(Location, models.CASCADE)

@@ -1,14 +1,17 @@
-{% extends 'library/base.html' %}
+{% extends 'library/base/base.html' %}
 
 {% block title %}
 {{ title }}
 {% endblock %}
 
 {% block main_content %}
+    <div class="container">
     <h1>{{ book.title }}</h1>
     <ul>
     {% for tag in tags %}
         <li>{{ tag }}</li>
     {% endfor %}
     </ul>
+    </div>
+
 {% endblock %}

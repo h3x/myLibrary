@@ -1,23 +1,30 @@
-{%  extends 'library/base.html' %}
+{%  extends 'library/base/base.html' %}
 {% load static %}
 
 {% block main_content %}
-<main>
-    <h1>Books</h1>
-    <small><a href="{%  url 'create-book' %}">Create Book</a></small>
+<div class="container">
+
 
     {% for book in books %}
         <div class="book-card" >
             <h3 class="book-title">{{ book.title }}</h3>
-            <div>
-                <a class='view-book' href="{% url 'single-books' slug=book.slug %}">View</a>
-                <a class='edit-book' href="{% url 'update-book' slug=book.slug %}">Edit</a>
-                <a class='delete-book' href="{% url 'delete-book' slug=book.slug %}">Delete</a>
+            <div class="description-container">
+                <p class="description">{{ book.description }}</p>
+            </div>
+            <div class="tag-container">
+                {% for tag in book.tag_ids.all %}
+                    <span class="tag">{{ tag.name }}</span>
+                {% endfor %}
+            </div>
+            <div class="control-container">
+                <a class='btn view-book' href="{% url 'single-books' slug=book.slug %}">View</a>
+                <a class='btn edit-book' href="{% url 'update-book' slug=book.slug %}">Edit</a>
+                <a class='btn delete-book' href="{% url 'delete-book' slug=book.slug %}">Delete</a>
             </div>
         </div>
     {% endfor %}
 
-    <hr />
+
     <h2>Tags</h2>
     <ul>
         {% for tag in tags %}
@@ -31,7 +38,7 @@
         {% endfor %}
     </ul>
 
-</main>
+</div>
 
 
 {% endblock %}
